@@ -1,0 +1,25 @@
+===== Step 1 : Working with command line =====
+#Build binary
+$docker container run --rm -p 8080:8080 -v $(pwd):/go/ -w /go golang:1.10.3-alpine3.7 go build -o main main
+
+#Run binary with container
+docker container run --rm -p 8080:8080 -v $(pwd):/go/ -w /go golang:1.10.3-alpine3.7 ./main
+
+===== Step 2 : Working with Dockerfile =====
+# Create file Dockerfile
+
+# Build new image with Dockerfile
+$docker image build -t sample:0.1 .
+
+# Run binary with container
+$docker container run --rm -p 8080:8080 sample:0.1
+
+===== Step 3 : Working with Dockerfile and multi-stage builds =====
+# https://docs.docker.com/develop/develop-images/multistage-build/
+# Create file Dockerfile2
+
+# Build new image with Dockerfile
+$docker image build -t sample:0.2 -f Dockerfile2 .
+
+# Run binary with container
+$docker container run --rm -p 8080:8080 sample:0.2
