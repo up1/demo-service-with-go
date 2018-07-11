@@ -1,0 +1,8 @@
+version: '3.3'
+
+services:
+   search:
+     image: sample:0.2
+     restart: always
+     ports:
+       - "8080:8080"
